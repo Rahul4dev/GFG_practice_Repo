@@ -1,0 +1,125 @@
+#You are given a strings. You need to reverse the string.
+Ans. 
+class Solution {
+    
+    reverseWord(str){
+        //Your code here
+        let reverse = "";
+        for ( let i = str.length - 1; i>=0 ; i--) {
+            reverse += str.charAt(i);
+        }return reverse;
+    }
+}
+input: Rahul   Output: luhaR
+------------------------------------------------------------------------------
+
+#Given a sorted array of size N and an integer K, 
+find the position at which K is present in the array using binary search.
+
+Ans.
+class Solution {
+    binarysearch(arr, n, k) {
+        // code here
+        for (let i=0; i <= n ; i++ ) {
+            if ( arr[i] == k ) {
+                return i;
+            }
+            
+        }
+        return -1;
+    }
+}
+Input:
+N = 5
+arr[] = {1 2 3 4 5} 
+K = 4
+Output: 3
+
+Input:
+N = 5
+arr[] = {11 22 33 44 55} 
+K = 445
+Output: -1
+
+----------------------------------------------------------------------------------
+
+Given an unsorted array A of size N that contains only non-negative integers, 
+find a continuous sub-array which adds to a given number S and return the left and right index 
+of that subarray.
+
+ans.
+
+subarraySum(arr, n, s)
+    {
+      if(s === 0) return [-1]
+        for(let head = 0, tail = 0, sum = 0; head <= arr.length;) {         
+
+            if(sum < s) {
+              sum += arr[head]
+              head++
+            }
+
+            if(sum === s) {
+              return [tail + 1, head]
+            }
+
+            if(sum > s) {
+              sum -= arr[tail]
+              tail++
+            } 
+            
+          }     
+
+        return [-1]
+    }
+
+N = 5, S = 12
+A[] = {1,2,3,7,5}
+Output: 2 4
+
+N = 10, S = 15
+A[] = {1,2,3,4,5,6,7,8,9,10}
+Output: 1 5
+
+---------------------------------------------------------------------------------------
+
+another solution of same problem:
+
+class Solution 
+{
+    //Function to find a continuous sub-array which adds up to a given number.
+    subarraySum(arr, n, s)
+    {
+        //your code here
+        
+      let sum=arr[0];
+      let start=0;
+      if(sum==s) return [start+1,start+1];
+      for(let i=1;i<arr.length;i++){
+          sum+=arr[i];
+          if (sum>s && start<i){
+              sum-=arr[start]
+              start++;
+          }
+       
+          if (sum==s){
+              return [start+1,i+1];
+          }
+      }
+      return [-1];
+    
+    }
+}
+
+------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
