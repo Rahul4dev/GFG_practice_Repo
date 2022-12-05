@@ -111,15 +111,58 @@ class Solution
     }
 }
 
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Check if two arrays A & B are equal or not, N is length of both array.
 
 
+check(A,B,N){
+        
+        A.sort();
+        B.sort();
+        for (let i=0; i<N; i++) {
+            if ( A[i] != B[i]) return false
+        }return true
+    }
+// without sort, the check will be difficult.
+// checking for not equal is right approach because not check will check if these arrays are equal or not..
+
+Input:
+N = 5
+A[] = {1,2,5,4,0}
+B[] = {2,4,5,0,1}
+Output: 1
 
 
+Input:
+N = 3
+A[] = {1,2,5}
+B[] = {2,4,15}
+Output: 0
 
+==================================================================================================================================================================
+# Find minimum and maximum element in an array
 
+Input:
+N = 6
+A[] = {3, 2, 1, 56, 10000, 167}
+Output:
+min = 1, max =  10000
 
+because of large inputs out sort method do not work.. it took me 20 min to figure out what is happening to my code. 
 
+for that we have to initialise the variables as bigInt values so that it grabs large space in the call stack memory. min and max values are assigned with infinity. then our Math.min and max could work on that.
 
+getMinMax(arr,n){
+        let min = Infinity;
+        let max = -Infinity;
+
+    for(let i = 0; i < arr.length; i++) {
+        min = Math.min(arr[i], min);
+        max = Math.max(arr[i], max);
+    }
+
+   return [min,max];
+    }
 
 
