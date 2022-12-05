@@ -165,4 +165,73 @@ getMinMax(arr,n){
    return [min,max];
     }
 
+-----------------------
+we can also do it by if checks and assigning the values to these min and max variables.
+
+getMinMax(arr,n){
+        let min = Infinity;
+    let max = -Infinity;
+
+    for(let i=0;i<n;i++)
+    {
+        if(arr[i]>max)
+        {
+            max = arr[i];
+        }
+        if(arr[i]<min)
+        {
+            min = arr[i];
+        }
+    }
+
+   return [min,max];
+    }
+    
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1)
+
+time complexity and space complexity will be discussed in DSA repo.
+=========================================================================================
+Given an array arr[] of positive integers of size N. Reverse every sub-array group of size K.
+Input:
+N = 5, K = 3
+arr[] = {1,2,3,4,5}
+Output expected: 3 2 1 5 4
+//Function to reverse every sub-array group of size k.
+could not solve this question.. I don't know about the swapping is required here. itried by slicing the Array and reverse method, but it does'nt work.
+    
+   // Swap integers in array group
+  swap(arr, i, j) {
+    let temp = arr[j];
+    arr[j] = arr[i];
+    arr[i] = temp;
+    return arr;
+  }
+
+  // Call swap on group
+  callInGroup(arr, i, j) { 
+    while (i < j) {
+      arr = this.swap(arr, i, j);
+      i++;
+      j--;
+    }
+    return arr;
+  }
+
+  reverseInGroups(arr, n, k) {
+    let i = 0;                       
+    let j = Math.min(k - 1, n - 1);
+    while (i < j && j < n) {
+      arr = this.callInGroup(arr, i, j);
+      // Check for remaning group elements 
+      if (n - (j + 1) >= k) { 
+        i = i + k;
+        j = j + k;
+      } else {
+        i = i + k;
+        j = n - 1;
+      }
+    }
+    return arr;
+  }
 
